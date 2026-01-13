@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LTUC Reports Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-image:url('https://img.freepik.com/premium-photo/purple-gradient-background-with-copy-space-text-image_7954-38035.jpg');
+}
+
+/* ===== GLOBAL ===== */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  background: #240046; /* Platform background */
+}
+
+/* Darker background for departments and reports */
+.dark-bg {
+  background:
+    linear-gradient(
+      rgba(58, 26, 92, 0.85),
+      rgba(58, 26, 92, 0.85)
+    ),
+    var(--bg-image);
+  background-size: cover;
+  background-position: center;
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 18px 40px;
+}
+
+/* Logo + title stacked */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container img {
+  height: auto;
+  max-width: 300px; /* keep natural size */
+}
+
+.logo-container h1 {
+  font-size: 28px;
+  color: #ffffff;
+  text-align: center;
+  margin: 8px 0 0 0;
+  font-weight: 700;
+}
+
+/* Navbar on the right */
+nav {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #c77dff;
+  transition: width 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== MAIN ===== */
+main {
+  flex: 1;
+}
+
+/* ===== PAGE TITLES ===== */
+.page-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 40px 0 30px;
+}
+
+.platform-title {
+  color: #ffffff;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.inner-title {
+  color: #ffffff;
+}
+
+/* ===== CONTAINERS ===== */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+/* ===== CARDS ===== */
+.card {
+  width: 320px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 700;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.08);
+  box-shadow: 0 24px 45px rgba(0,0,0,0.6);
+}
+
+/* ===== PLATFORM COLORS ===== */
+.platform-university {
+  background: linear-gradient(135deg, #3c096c, #240046);
+}
+.platform-moodle {
+  background: linear-gradient(135deg, #5a189a, #3c096c);
+}
+.platform-training {
+  background: linear-gradient(135deg, #7b2cbf, #5a189a);
+}
+
+/* ===== DEPARTMENT COLORS ===== */
+.dept-admission {
+  background: linear-gradient(135deg, #5a189a, #3c096c);
+}
+.dept-finance {
+  background: linear-gradient(135deg, #7b2cbf, #5a189a);
+}
+.dept-registration {
+  background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+}
+.dept-administration {
+  background: linear-gradient(135deg, #3c096c, #240046);
+}
+.dept-moodle {
+  background: linear-gradient(135deg, #c77dff, #9d4edd);
+}
+
+/* ===== REPORT CARDS ===== */
+.report-card {
+  background: linear-gradient(135deg, #7b2cbf, #5a189a);
+  color: #ffffff;
+  font-size: 18px;
+  border-left: 8px solid #c77dff;
+}
+
+.report-card a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* ===== BUTTON ===== */
+.back-btn {
+  margin: 20px 40px;
+  padding: 14px 30px;
+  background: linear-gradient(135deg, #7b2cbf, #5a189a);
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #ffffff;
+  text-align: center;
+  padding: 18px;
+  color: #333;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="https://ltuc.edu.jo/wp-content/uploads/2025/01/LTUC-Logo.png" alt="LTUC Logo">
+    <h1>LTUC Reports Dashboard</h1>
+  </div>
+
+  <nav>
+    <a href="#" onclick="backToPlatforms()">Home Page</a>
+    <a href="#" onclick="showDepartments('University')">University</a>
+    <a href="#" onclick="showDepartments('Moodle')">Moodle</a>
+    <a href="#" onclick="showDepartments('Training')">Training</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- PLATFORM VIEW -->
+<div id="platformView">
+  <div class="page-title platform-title">Select Platform</div>
+  <div class="container">
+    <div class="card platform-university" onclick="showDepartments('University')">University</div>
+    <div class="card platform-moodle" onclick="showDepartments('Moodle')">Moodle</div>
+    <div class="card platform-training" onclick="showDepartments('Training')">Training Courses</div>
+  </div>
+</div>
+
+<!-- DEPARTMENT VIEW -->
+<div id="departmentView" style="display:none;">
+  <div class="back-btn" onclick="backToPlatforms()">← Back to Platforms</div>
+  <div id="deptTitle" class="page-title inner-title"></div>
+  <div id="departments" class="container"></div>
+</div>
+
+<!-- REPORT VIEW -->
+<div id="reportView" style="display:none;">
+  <div class="back-btn" onclick="backToDepartments()">← Back to Departments</div>
+  <div id="reportTitle" class="page-title inner-title"></div>
+  <div id="reports" class="container"></div>
+</div>
+
+</main>
+
+<footer>© 2026 LTUC Education – All Rights Reserved</footer>
+
+<script>
+const data={
+  University:{
+    Admission:["Active Admitted Students","Applicants Students","Student Academic Info","Student Personal Info"],
+    Finance:["All Students","Reg Bill Details","Registered Students","Registered Students Payments","Registration Bill Summary","Student Registration Permisisons"],
+    Registration:["Facility Timetable Conflict","Facility Timetable Pivot","Registration Summary","Timetable","Students Timetable","Teacher Timetable Conflicts","Reg Hours Max","Reg Hours Min","Registration Numbers By Branch","All Students - Registration"],
+    Administration:["Attendance Log"]
+  },
+  Moodle:{
+    Moodle:["Integration Moodle Classes - Training","Integration Moodle Classes - University","Integration Moodle New Students - Placment Test"]
+  },
+  Training:{
+    Admission:["Active Admitted Students","Applicants Students"],
+    Finance:["Reg Bill Details","Registered Students","Registered Students Payments","Registration Bill Summary"],
+    Registration:["All Students","Registration Summary","Timetable"]
+  }
+};
+
+let currentPlatform="";
+
+function showDepartments(p){
+  currentPlatform=p;
+  document.body.classList.add("dark-bg");
+  deptTitle.textContent=p+" Departments";
+  departments.innerHTML="";
+  Object.keys(data[p]).forEach(d=>{
+    const el=document.createElement("div");
+    el.className="card "+getDeptColor(d);
+    el.textContent=d;
+    el.onclick=()=>showReports(d);
+    departments.appendChild(el);
+  });
+  platformView.style.display="none";
+  departmentView.style.display="block";
+}
+
+function showReports(d){
+  reportTitle.textContent=d+" Reports";
+  reports.innerHTML="";
+  data[currentPlatform][d].forEach(r=>{
+    const el=document.createElement("div");
+    el.className="card report-card";
+    el.innerHTML=`<a href="#">${r}</a>`;
+    reports.appendChild(el);
+  });
+  departmentView.style.display="none";
+  reportView.style.display="block";
+}
+
+function backToPlatforms(){
+  document.body.classList.remove("dark-bg");
+  departmentView.style.display="none";
+  reportView.style.display="none";
+  platformView.style.display="block";
+}
+
+function backToDepartments(){
+  reportView.style.display="none";
+  departmentView.style.display="block";
+}
+
+function getDeptColor(d){
+  return {
+    Admission:"dept-admission",
+    Finance:"dept-finance",
+    Registration:"dept-registration",
+    Administration:"dept-administration",
+    Moodle:"dept-moodle"
+  }[d]||"";
+}
+</script>
+
+</body>
+</html>
