@@ -9,73 +9,89 @@
 :root{
   --bg-image:url('https://img.freepik.com/premium-photo/purple-gradient-background-with-copy-space-text-image_7954-38035.jpg');
 }
-html,body{
-  margin:0;height:100%;
-  font-family:'Roboto',sans-serif;
-  background:#240046;
-}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;                /* use full viewport height */
+  font-family: 'Roboto', sans-serif;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #fff;
 
-body {
   display: flex;
   flex-direction: column;
 }
 
 main {
-  flex: 1;
+  flex: 1 0 auto;              /* main grows to fill remaining space */
 }
 
-.container {
-  margin-bottom: 80px;
+footer {
+  flex-shrink: 0;               /* footer never shrinks */
+  background: #fff;
+  color: #333;
+  text-align: center;
+  padding: 18px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: #ffffff;       /* white background for all pages */
+  color: #333;               /* dark text for contrast */
+  display: flex;
+  flex-direction: column;
 }
 
 
-.dark-bg{
-  background:linear-gradient(rgba(58,26,92,.85),rgba(58,26,92,.85)),var(--bg-image);
-  background-size:cover;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: #3c096c;       /* dark purple */
+  color: #fff;               /* text stays white */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* subtle shadow */
+  z-index: 10;               /* ensures it’s above background */
 }
-header{
-  display:flex;justify-content:space-between;
-  padding:18px 40px;
-}
+
 .logo-container{text-align:center}
 .logo-container img{max-width:350px}
 .logo-container h1{color:#fff;margin:10px 0 0}
-nav{display:flex;gap:25px;margin-top:20px}
-
-nav a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  position: relative;
-  padding: 8px 4px;           /* مساحة للتأثير */
-  transition: color 0.3s ease;
-cursor: pointer;
+nav {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
 }
 
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background: #c77dff;
-  transition: width 0.3s ease;
+nav a {
+  color: #ffffff;           /* اللون الطبيعي */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;          /* الحجم الطبيعي */
+  cursor: pointer;
+  transition: all 0.3s ease; /* لتطبيق التغيير بسلاسة */
 }
 
 nav a:hover {
-  border-radius:10px;
+  color: #5a189a;           /* اللون عند hover */
+  font-size: 18px;           /* حجم الخط عند hover */
 }
 
 
-nav a:hover::after {
-  width: 100%;
-}
+
+
 
 
 .page-title{color:#fff;text-align:center;font-size:30px;margin:40px 0}
-.container{display:flex;flex-wrap:wrap;gap:30px;justify-content:center}
+.container{
+  display:flex;flex-wrap:wrap;
+  gap:30px;justify-content:center;
+  margin-bottom:80px;
+}
 .card{
   width:320px;height:220px;border-radius:20px;
   display:flex;align-items:center;justify-content:center;
@@ -83,37 +99,48 @@ nav a:hover::after {
   cursor:pointer;transition:.3s;text-align:center;
 }
 .card:hover{transform:translateY(-10px) scale(1.05)}
+
 .platform-university{background:linear-gradient(135deg,#3c096c,#240046)}
 .platform-moodle{background:linear-gradient(135deg,#5a189a,#3c096c)}
 .platform-training{background:linear-gradient(135deg,#7b2cbf,#5a189a)}
+.platform-sae{background:linear-gradient(135deg,#9d4edd,#7b2cbf)}
+
 .dept-admission{background:linear-gradient(135deg,#5a189a,#3c096c)}
 .dept-finance{background:linear-gradient(135deg,#7b2cbf,#5a189a)}
 .dept-registration{background:linear-gradient(135deg,#9d4edd,#7b2cbf)}
 .dept-administration{background:linear-gradient(135deg,#3c096c,#240046)}
 .dept-moodle{background:linear-gradient(135deg,#c77dff,#9d4edd)}
+
 .report-card{
   background:linear-gradient(135deg,#7b2cbf,#5a189a);
   border-left:8px solid #c77dff;
 }
 .report-card a{color:#fff;text-decoration:none}
-.back-btn{
-  margin:20px 40px;padding:12px 25px;
-  background:#7b2cbf;color:#fff;border-radius:8px;
-  cursor:pointer;display:inline-block;
+
+.back-btn {
+  margin: 20px 40px;
+  padding: 12px 25px;
+  background: #3c096c;      /* same as header */
+  color: #fff;              /* white text */
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
-footer {
-  background: #ffffff;
-  text-align: center;
-  padding: 18px;
-  color: #333;
+
+.back-btn:hover {
+  background: #5a189a;      /* optional: slightly lighter purple on hover */
 }
+
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo-container">
+  <div class="logo-container" onclick="backToPlatforms()" style="cursor:pointer;">
     <img src="https://ltuc.edu.jo/wp-content/uploads/2025/01/LTUC-Logo.png">
     <h1>LTUC Reports Dashboard</h1>
   </div>
@@ -122,6 +149,7 @@ footer {
     <a onclick="showDepartments('University')">University</a>
     <a onclick="showDepartments('Moodle')">Moodle</a>
     <a onclick="showDepartments('Training')">Training</a>
+    <a onclick="showDepartments('SAE')">SAE</a>
   </nav>
 </header>
 
@@ -133,6 +161,7 @@ footer {
     <div class="card platform-university" onclick="showDepartments('University')">University</div>
     <div class="card platform-moodle" onclick="showDepartments('Moodle')">Moodle</div>
     <div class="card platform-training" onclick="showDepartments('Training')">Training</div>
+    <div class="card platform-sae" onclick="showDepartments('SAE')">SAE</div>
   </div>
 </div>
 
@@ -166,12 +195,13 @@ Finance:[
 {name:"Reg Bill Details",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBFSmBxeZrpS4DghSj_kePTAZZGY6AXTRCvb0cix3zEV60?e=5xpLLn"},
 {name:"Registered Students Payments",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAcqsag5D-2SpoyMzXyLs-HAW79A_Km1iBz4WGVSYsZM3M?e=yNmsaA"},
 {name:"Registration Bill Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAXFUOa3I88TK4gEmji59m5Abdro9_APgoMDdZ26dZVLRM?e=cFzb1e"},
-{name:"Student Registration Permisisons",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAgYlNme_tfTrlAs0cvHPbBAQiy_Xx5ypn9MfoPkHWt_CQ?e=mGtac3"}
+{name:"Student Registration Permisisons",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAgYlNme_tfTrlAs0cvHPbBAQiy_Xx5ypn9MfoPkHWt_CQ?e=mGtac3"},
+{name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDLdPVC1a2KQ42UeeEELFfqAQ-7Pk15e4bymQ6cUEvoPqQ"}
 ],
 Registration:[
 {name:"Facility Timetable Conflict",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBj1ewNcKKUTZhVlvpOV4cZAYlKAE67bXILD6P711MaUV8?e=XIH9xU"},
 {name:"Facility Timetable Pivot",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgD7PmqNExPcTaBKXqmJh12nAQFyyfK8078RpmT9dzb_lxM?e=yOuY7X"},
-{name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDLdPVC1a2KQ42UeeEELFfqAQ-7Pk15e4bymQ6cUEvoPqQ?e=X1WBcH"},
+{name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCzLty7q9VIRqtTZN_SVqG1Aft2t8DF-hwlT4l_rIWKOxk"},
 {name:"Registration Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA74qQ4cWVlSrTwP40VUVGwAT5-6av0ndQUb9fBPf_Z8n8?e=6T6zEk"},
 {name:"Timetable",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB-VzkMkikQQYbp3rZ9hPQKAdy63X1Pi10zmszvnSXqTbk?e=tVe5UO"},
 {name:"Students Timetable",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDrHf4ltLNSRr9k-BH42LlGAfTi188Hn_adEYQ1qh-X5Yk?e=jIv4sL"},
@@ -200,21 +230,39 @@ Admission:[
 Finance:[
 {name:"Reg Bill Details",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgANRRTP-oIHQ5T61ZFmxg41AS5yJvKtx5J5-tATDf25hFs?e=yCgcjS"},
 {name:"Registered Students Payments",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCcheFmZDNwQ5Q7ZGF4vn9NAZVBjH0NROgKdvo92euHGLw?e=EkrSSs"},
-{name:"Registration Bill Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgASZrLAndJbRLKw88jUnD3xAS2BWfziH8xg97M50yWbElY?e=xmroXk"}
+{name:"Registration Bill Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgASZrLAndJbRLKw88jUnD3xAS2BWfziH8xg97M50yWbElY?e=xmroXk"},
+{name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCa1MvwmTCiTZZ-KTs-emZfAT7uXcwhqrMUk6Hvw_JGdOI?e=wvUuKW"},
 ],
 Registration:[
 {name:"All Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAtwrCnS9PCRY0JxPPPIa2sAUekZxoXjK5E7cz01V4q-v0?e=jaUdK0"},
-{name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCa1MvwmTCiTZZ-KTs-emZfAT7uXcwhqrMUk6Hvw_JGdOI?e=wvUuKW"},
+{name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCoBLsnZbkBT67HSH14OSCQAQnnHP03QSxuElLQU99aXJE"},
 {name:"Registration Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDLOFMJfqadQpmrnxjOIL_qAdHhFvSFSx9_2Ur_JTgQetY?e=MfZQOh"},
 {name:"Timetable",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAcH9bJGU8aQrjxZSKA11V6AVVONw4BmuTttOHeYZu3faM?e=iKTJWI"}
 ]
+},
+SAE:{
+  Finance:[
+    {name:"All Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDbZTy0R--5Rr8cpl-8R5PJAWL0U2tKQ4R6S0yZZa3beak?e=36zdww"},
+    {name:"Reg Bill Details",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAFPrktrLuiRrOpwGIavOtgAXLdTGnRYphF_vL_bC4xdns?e=HWciU5"},
+    {name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCXO_2JKVxkRqBa5FyP03uhAUjkanhbFLWrG8lcRq1ESTM?e=gY3lxu"},
+    {name:"Registered Students Payments",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB3l5RVM57tTb4FTavbQtsQAZvhrIFaRmMw-bZDFMmTlFE?e=2Bk4CJ"},
+    {name:"Registration Bill Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCYy3S3xhJaSL_30ETaHjozART-lbrSbLyrLLducy7F8sg?e=MxBTfX"},
+    {name:"Student Registration Permisisons",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDq6CULHKZ5TJtV9Yejtp9OATuh1wO9BqqGq4O7BV7e52k?e=QlHNY1"}
+  ],
+  Registration:[
+    {name:"Active Admitted Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAeYsG8PvuoRpcMHrGlbitgAR_VodlNQv4XTu4UG1b2X2A?e=tabPPi"},
+    {name:"Timetable View",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCw0tCM99rhQrBhRd7aZqyuAdYaatfJ4a5PNEtHAlMADQA?e=JGb2GF"},
+    {name:"All Students - Registration",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB4ZUwv7DOJSYRkxadgabv4ASwhKW6lgrmzS1RpgS-Z2xQ?e=57cLoF"},
+    {name:"Students Timetable",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBKiIHhno8-QZ_wjw7rdNBnAejSKVBlObFsgNuP-LLSv3k?e=qkZM5f"},
+    {name:"Registered Students - Registration",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBKD6RjHLpkTJ4oPOaTCDFrAXiJeSivWD8SJOBVQX13o0w?e=cHeCPa"},
+    {name:"Registration Status By Branch",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBrwxegbRu8RbMjK32tq9EDASGi56Cjpi3oiA5EE6q2d4w?e=k2ZSTD"}
+  ]
 }
 };
 
 let currentPlatform="";
 function showDepartments(p){
   currentPlatform=p;
-  document.body.classList.add("dark-bg");
   deptTitle.textContent=p+" Departments";
   departments.innerHTML="";
   Object.keys(data[p]).forEach(d=>{
@@ -240,7 +288,6 @@ function showReports(d){
   reportView.style.display="block";
 }
 function backToPlatforms(){
-  document.body.classList.remove("dark-bg");
   platformView.style.display="block";
   departmentView.style.display="none";
   reportView.style.display="none";
