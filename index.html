@@ -183,82 +183,233 @@ nav a:hover {
 
 <script>
 const data = {
-University:{
-Admission:[
-{name:"Active Admitted Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBIXYftb3h7R5DuNBT9LDQ3AV9VF6y5advGpNTgnEtpd3s"},
-{name:"Applicants Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCRxnbca_vZSrspyPDWZdfrASDupaai_t5YfLLDjjdvp_4?e=FLPScj"},
-{name:"Student Academic Info",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBy4MxQM8nlQKmtLaPoa9xCAQKNGc-9lhVPqW9GbU3Q_0A?e=mWYIDi"},
-{name:"Student Personal Info",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCnt_c435FzSpUbs5EdZPUKAexCURaN6LaZ8H1Jj17rvHk?e=BzQl2j"}
-],
-Finance:[
-{name:"All Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAVJr6j74soRbfJ6gLetq9tAY_Y8G5gHwx6QE1irdxS3r8?e=RR6cBa"},
-{name:"Reg Bill Details",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBFSmBxeZrpS4DghSj_kePTAZZGY6AXTRCvb0cix3zEV60?e=5xpLLn"},
-{name:"Registered Students Payments",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAcqsag5D-2SpoyMzXyLs-HAW79A_Km1iBz4WGVSYsZM3M?e=yNmsaA"},
-{name:"Registration Bill Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAXFUOa3I88TK4gEmji59m5Abdro9_APgoMDdZ26dZVLRM?e=cFzb1e"},
-{name:"Student Registration Permisisons",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAgYlNme_tfTrlAs0cvHPbBAQiy_Xx5ypn9MfoPkHWt_CQ?e=mGtac3"},
-{name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDLdPVC1a2KQ42UeeEELFfqAQ-7Pk15e4bymQ6cUEvoPqQ"}
-],
-Registration:[
-{name:"Facility Timetable Conflict",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBj1ewNcKKUTZhVlvpOV4cZAYlKAE67bXILD6P711MaUV8?e=XIH9xU"},
-{name:"Facility Timetable Pivot",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgD7PmqNExPcTaBKXqmJh12nAQFyyfK8078RpmT9dzb_lxM?e=yOuY7X"},
-{name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCzLty7q9VIRqtTZN_SVqG1Aft2t8DF-hwlT4l_rIWKOxk"},
-{name:"Registration Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA74qQ4cWVlSrTwP40VUVGwAT5-6av0ndQUb9fBPf_Z8n8?e=6T6zEk"},
-{name:"Timetable",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB-VzkMkikQQYbp3rZ9hPQKAdy63X1Pi10zmszvnSXqTbk?e=tVe5UO"},
-{name:"Students Timetable",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDrHf4ltLNSRr9k-BH42LlGAfTi188Hn_adEYQ1qh-X5Yk?e=jIv4sL"},
-{name:"Teacher Timetable Conflicts",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAmjCcE5b3dRa1egjaN8keQAbtn5ItA8dqRhjpP3dPq2js?e=kOMebS"},
-{name:"Reg Hours Max",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgD9JAdL1MSURIUHnZOTUZnYAZvPZMxgVybdE7pNj9cmieo?e=24pHir"},
-{name:"Reg Hours Min",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAby8iWPgB0Totr3Ehr4KRgAXQoGIAX-N5vR9HIMI6iHmc?e=XIbYbi"},
-{name:"Registration Numbers By Branch",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAXcpvdkdakSqKHmkv8P6NjAYhqpSXeTl3_sTOnf_wm2kw?e=uuk52j"},
-{name:"All Students - Registration",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBwNnp94txlRZiC0sYUGpmnAbuR2c-4kyfO01oF_rZu-FE?e=hbcn91"}
-],
-Administration:[
-{name:"Attendance Log",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDG_LyHQsceTKBfLsOSylFJAVjppjF8yqTdvEl6iHcBz2Y?e=mIWFtx"}
-]
-},
-Moodle:{
-Moodle:[
-{name:"Integration Moodle Classes - Training",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCy-nX884zwR7CcrrZL47UfAeXdbyESNlixx6Nvduo6cic?e=6r9n9v"},
-{name:"Integration Moodle Classes - University",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB9vppbiBpNRa96fTivygzhAY5U-_dsJ5q283hSwdNPl9w?e=GActTH"},
-{name:"Integration Moodle New Students - Placment Test",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAVCZNBbF2cSYHy9A5EKPdkAb1sg4v25j1SguuCyqTk560?e=qlSeD0"}
-]
-},
-Training:{
-Admission:[
-{name:"Active Admitted Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgC922fjas2nSr1PpaFlAAvXAbNKNabamWr-Z9Q6I7CCx1E?e=iL1Zhr"},
-{name:"Applicants Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgALUNnr2JLcRqiD2FwzE4N5AfgSm1BJStc_3n5N51qlnqk?e=PXTxEk"}
-],
-Finance:[
-{name:"Reg Bill Details",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgANRRTP-oIHQ5T61ZFmxg41AS5yJvKtx5J5-tATDf25hFs?e=yCgcjS"},
-{name:"Registered Students Payments",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCcheFmZDNwQ5Q7ZGF4vn9NAZVBjH0NROgKdvo92euHGLw?e=EkrSSs"},
-{name:"Registration Bill Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgASZrLAndJbRLKw88jUnD3xAS2BWfziH8xg97M50yWbElY?e=xmroXk"},
-{name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCa1MvwmTCiTZZ-KTs-emZfAT7uXcwhqrMUk6Hvw_JGdOI?e=wvUuKW"},
-],
-Registration:[
-{name:"All Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAtwrCnS9PCRY0JxPPPIa2sAUekZxoXjK5E7cz01V4q-v0?e=jaUdK0"},
-{name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCoBLsnZbkBT67HSH14OSCQAQnnHP03QSxuElLQU99aXJE"},
-{name:"Registration Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDLOFMJfqadQpmrnxjOIL_qAdHhFvSFSx9_2Ur_JTgQetY?e=MfZQOh"},
-{name:"Timetable",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAcH9bJGU8aQrjxZSKA11V6AVVONw4BmuTttOHeYZu3faM?e=iKTJWI"}
-]
-},
-SAE:{
-  Finance:[
-    {name:"All Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDbZTy0R--5Rr8cpl-8R5PJAWL0U2tKQ4R6S0yZZa3beak?e=36zdww"},
-    {name:"Reg Bill Details",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAFPrktrLuiRrOpwGIavOtgAXLdTGnRYphF_vL_bC4xdns?e=HWciU5"},
-    {name:"Registered Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCXO_2JKVxkRqBa5FyP03uhAUjkanhbFLWrG8lcRq1ESTM?e=gY3lxu"},
-    {name:"Registered Students Payments",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB3l5RVM57tTb4FTavbQtsQAZvhrIFaRmMw-bZDFMmTlFE?e=2Bk4CJ"},
-    {name:"Registration Bill Summary",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCYy3S3xhJaSL_30ETaHjozART-lbrSbLyrLLducy7F8sg?e=MxBTfX"},
-    {name:"Student Registration Permisisons",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDq6CULHKZ5TJtV9Yejtp9OATuh1wO9BqqGq4O7BV7e52k?e=QlHNY1"}
-  ],
-  Registration:[
-    {name:"Active Admitted Students",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAeYsG8PvuoRpcMHrGlbitgAR_VodlNQv4XTu4UG1b2X2A?e=tabPPi"},
-    {name:"Timetable View",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCw0tCM99rhQrBhRd7aZqyuAdYaatfJ4a5PNEtHAlMADQA?e=JGb2GF"},
-    {name:"All Students - Registration",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB4ZUwv7DOJSYRkxadgabv4ASwhKW6lgrmzS1RpgS-Z2xQ?e=57cLoF"},
-    {name:"Students Timetable",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBKiIHhno8-QZ_wjw7rdNBnAejSKVBlObFsgNuP-LLSv3k?e=qkZM5f"},
-    {name:"Registered Students - Registration",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBKD6RjHLpkTJ4oPOaTCDFrAXiJeSivWD8SJOBVQX13o0w?e=cHeCPa"},
-    {name:"Registration Status By Branch",url:"https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBrwxegbRu8RbMjK32tq9EDASGi56Cjpi3oiA5EE6q2d4w?e=k2ZSTD"}
-  ]
+  University: {
+    Admission: [
+      {
+        name: "Active Admitted Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA4fzr7Z2H1SZE2-ctdE7ijAetBWjAx9JOBacJKB2Eitv4?e=D7UyFz"
+      },
+      {
+        name: "Applicants Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBX553PfUkOTolwP9NqlMxHAbMbCTKU66gcBHBCxY3vivg?e=MiXBuE"
+      },
+      {
+        name: "Student Academic Info",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAgfGULhEt5QI_CIqZ_28E1AZ4JfHlJIUispVTHEVoDsP4?e=YW6csi"
+      },
+      {
+        name: "Student Personal Info",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCrtJQ0NRs1SrGuYi8WN2YcAeiLY0CK3QOCUEU65cHY3G4?e=k5wXHv"
+      }
+    ],
+
+    Finance: [
+      {
+        name: "All Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDpdHMNZq4SRbWjciK4Q3ZRAX9nSgcxxlu_5sd5PK7MWyU?e=6ezjtw"
+      },
+      {
+        name: "Reg Bill Details",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgApbcDNP82HTqDXHPw0iC_BAYn_d0VrBl63RZcJ_l9QPR0?e=iSxPim"
+      },
+      {
+        name: "Registered Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAOEcKzU3oZR6-2zpL31DFdARkjbRwL-gwpGWoRBNCqwr4?e=fPcwtX"
+      },
+      {
+        name: "Registered Students Payments",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBKgLX7pKRXRrSl_3nKIqZiAVHY6jAE89Mt_LwYV-fD_VE?e=fiQZ1n"
+      },
+      {
+        name: "Registration Bill Summary",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDv9kGTgLkFSbFzzVnfTjXyAQPXBSDAjclDpp1Oh6eLJsc?e=Kxg21m"
+      },
+      {
+        name: "Student Registration Permisisons",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAPExEl6jxqTLyjrbi-S5gyAUnwbvtm0MMQvlNSGbwsuXs?e=OrkRjW"
+      }
+    ],
+
+    Registration: [
+      {
+        name: "Facility Timetable Conflict",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAhwjmJ7bMzRLaghQYCEIgJAYAUO2AvXLMgTJlKRWWAzrw?e=opavcm"
+      },
+      {
+        name: "Facility Timetable Pivot",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBTbdCL2jw_QpkwZjdsIv0BAW8khIUdAAJd6k9E--JFrPY?e=uDKC0J"
+      },
+      {
+        name: "Registered Students - Registration",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAhIWpPIzO-Taw2JKFb8YbWAYtj97nAYZ_CWFx7QcaQm4Q?e=1ITCI6"
+      },
+      {
+        name: "Registration Summary",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAx27odvGawSrhTAmt2MK04AZMyO4IRjmCNi7iOyUojy8k?e=8qsl0D"
+      },
+      {
+        name: "Timetable",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDsSGT8xrbwSb98ZfT_zwJoAfygGMdDBlfyQ1h031-TWTA?e=3wfzul"
+      },
+      {
+        name: "Students Timetable",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAQuzytWqANTbdODSodWzjTAWgRIszrCRDKv7Q_793Lfzg?e=g48v9C"
+      },
+      {
+        name: "Teacher Timetable Conflicts",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCo6lxjingtS7C8fxlcGqlzAYosx6C8x79XHgS04iThlzM?e=o3vbyQ"
+      },
+      {
+        name: "Reg Hours Max",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB4Ieo8e8XxRZVkZa38T7XHASF7XtB_Y0baQvrOorM959w?e=JLCuN0"
+      },
+      {
+        name: "Reg Hours Min",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA0zqXpDsIST7FMzgeU_HBUAYc1xs0Q6fdnW81mWsMeTl0?e=d4lhQp"
+      },
+      {
+        name: "Registration Numbers By Branch",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCVR77WEB9RSJ2Bq6Ll3mwfAZ33I3rH2ZYaSIh1g4sT7rg?e=aFZtu2"
+      },
+      {
+        name: "All Students - Registration",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgD-4j53RrhfSbIaqEYqpAF2AT9sC2ilHtNU3e6NCwtqTPY?e=ecWQO5"
+      }
+    ],
+
+    Administration: [
+      {
+        name: "Attendance Log",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAEuQjRRgGgTJCZ_wAswtNiAWaM8M1Zq0Yeq_rAKVoUXVg?e=Z3Zmgx"
+      }
+    ]
+  },
+
+  Moodle: {
+    Moodle: [
+      {
+        name: "Integration Moodle Classes - Training",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBSKrJUxdIQQphzqAvh0rJ4Af1u4dbKcWRhJ9DIIOvhvM0?e=4YRHUG"
+      },
+      {
+        name: "Integration Moodle Classes - University",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDhPNhw0NhlTJ7fdSS55b1HATqr52Nk15EZSbnUTsNovrI?e=JjJSq8"
+      },
+      {
+        name: "Integration Moodle New Students - Placment Test",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBC6h04M8I0SY1GKp6jl1ucAYlLa2_E__mZqtOsqttPXa0?e=NKTej0"
+      }
+    ]
+  },
+
+  Training: {
+    Admission: [
+      {
+        name: "Active Admitted Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgD92lvg4-swSqCp8P2IlJN6AZES6kBQI2NcwagAuUqSAPg?e=VLDKmR"
+      },
+      {
+        name: "Applicants Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBxdes786GIQ54T9jx4SRdYAXYjwA2UneLhOH_1SeJobw0?e=Zj3Qxf"
+      }
+    ],
+
+    Finance: [
+      {
+        name: "All Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDoOU9oE-MuQpSC5RrMVvepAZyK1qVUilEtyjl0IIrxZMc?e=xoszYm"
+      },
+      {
+        name: "Reg Bill Details",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAiUaqAl7CZT6ZMtW2g1TbWAYNMJyDS4KuPyN8Fegu1C_A?e=211iYq"
+      },
+      {
+        name: "Registered Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBxfscm4wNlTYiqK9ACM-fDAQKaaVvuuO4LhMeWCCGgqQ8?e=H6tL2w"
+      },
+      {
+        name: "Registered Students Payments",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA7Nr3xwzcTSIZb8D5Ppk8CAZLZfgXdqP1SY8AqBfWaFI0?e=zjfaC9"
+      },
+      {
+        name: "Registration Bill Summary",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCz_snPM4-zTr1fUZyYieY_Abx_8urjgdFv-Wu4g2uRm0A?e=yxjMeo"
+      }
+    ],
+
+    Registration: [
+      {
+        name: "Registration Summary",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDbfQzIREs0SJWsUsyAZmqEAfoklT3LHTF06Z4ODnPmH50?e=HjDOWS"
+      },
+      {
+        name: "Timetable",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDrzZIFTCvvS5kZUJYtSKvYAfawZTwJc4B2bvOHydUwfNc?e=VdeUV0"
+      },
+      {
+        name: "User Registered Students - Registration",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBP0nNOAIksQ6uQ27yX4nWRASSVY-h3yZhqSGKsY3RPFQI?e=uWQzAH"
+      }
+    ]
+  },
+
+  SAE: {
+    Finance: [
+      {
+        name: "All Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBVCWOvwAwhQq051HEOpXhWAUMFfoRVmdvFAzR5kf7-dlw?e=mrD9Yh"
+      },
+      {
+        name: "Reg Bill Details",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAs1rUz10BsQ7yM6TRP6I38AXLVJzfd4PlnBGRtoxpwa1A?e=2Wsgef"
+      },
+      {
+        name: "Registered Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCXkPC3WE4eTZmly6CPbBB3AXY8XpXIfjoPQLhJ9FL8BJI?e=5jceRu"
+      },
+      {
+        name: "Registered Students Payments",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAFiucIpmaFQqLk8NBIKRmaATWYVfdkfM-8jKH31Q157bo?e=nXkNZL"
+      },
+      {
+        name: "Registration Bill Summary",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCdcp7FHp0MQ4-jCywesKXAAQwjvWeYVcaZm0NDwEPZvWs?e=nb1a5I"
+      },
+      {
+        name: "Student Registration Permisisons",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgD2O5tIUobkTbyqKeKxskfsAar84sa9As_En8SS3InWf-c"
+      }
+    ],
+
+    Registration: [
+      {
+        name: "Active Admitted Students",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCinteUYiZKQI-iCaw9AuVJAWripw81OQ5kP94hYtfkrsg?e=gLiaD3"
+      },
+      {
+        name: "Timetable View",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAOQBtkdvn0Qr7I1gM7w0xdAU6qN_HZnqBPFNqxhiObM3A?e=KZpeGK"
+      },
+      {
+        name: "All Students - Registration",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCZazuCzXwSQZMiL4-cbszeAccC3-VchNFWO9nsyn8bVYA?e=kpdyke"
+      },
+      {
+        name: "Students Timetable",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBYN60PtrATSow6_bYLA6okAe4Jx4lFb4puPO_h6IZW3zo?e=4ARywd"
+      },
+      {
+        name: "Registered Students - Registration",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA_kEukpQ_ERpUbx5TO_fEjAcFLMoI-MKoE1j0ABxaVRZM?e=RgoNJd"
+      },
+      {
+        name: "Registration Status By Branch",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCvZHg9mY5cSbZ_8SIf2GVfAXTwPnB4gj5hRt3SJuUZuZY?e=ROcCRz"
+      }
+    ]
+  }
 }
-};
+;
 
 let currentPlatform="";
 function showDepartments(p){
@@ -300,3 +451,4 @@ function backToDepartments(){
 
 </body>
 </html>
+
