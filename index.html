@@ -12,23 +12,22 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;                /* use full viewport height */
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #fff;
-
   display: flex;
   flex-direction: column;
 }
 
 main {
-  flex: 1 0 auto;              /* main grows to fill remaining space */
+  flex: 1 0 auto;
 }
 
 footer {
-  flex-shrink: 0;               /* footer never shrinks */
+  flex-shrink: 0;
   background: #fff;
   color: #333;
   text-align: center;
@@ -40,22 +39,20 @@ body {
   padding: 0;
   min-height: 100%;
   font-family: 'Roboto', sans-serif;
-  background: #ffffff;       /* white background for all pages */
-  color: #333;               /* dark text for contrast */
+  background: #ffffff;
+  color: #333;
   display: flex;
   flex-direction: column;
 }
-
-
 
 header {
   display: flex;
   justify-content: space-between;
   padding: 18px 40px;
-  background: #3c096c;       /* dark purple */
-  color: #fff;               /* text stays white */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* subtle shadow */
-  z-index: 10;               /* ensures it’s above background */
+  background: #3c096c;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 10;
 }
 
 .logo-container{text-align:center}
@@ -65,26 +62,23 @@ nav {
   display: flex;
   gap: 25px;
   margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 nav a {
-  color: #ffffff;           /* اللون الطبيعي */
+  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
-  font-size: 16px;          /* الحجم الطبيعي */
+  font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s ease; /* لتطبيق التغيير بسلاسة */
+  transition: all 0.3s ease;
 }
 
 nav a:hover {
-  color: #5a189a;           /* اللون عند hover */
-  font-size: 18px;           /* حجم الخط عند hover */
+  color: #5a189a;
+  font-size: 18px;
 }
-
-
-
-
-
 
 .page-title{color:#fff;text-align:center;font-size:30px;margin:40px 0}
 .container{
@@ -104,24 +98,36 @@ nav a:hover {
 .platform-moodle{background:linear-gradient(135deg,#5a189a,#3c096c)}
 .platform-training{background:linear-gradient(135deg,#7b2cbf,#5a189a)}
 .platform-sae{background:linear-gradient(135deg,#9d4edd,#7b2cbf)}
+.platform-callcenter{background:linear-gradient(135deg,#6a00f4,#3c096c)}
 
 .dept-admission{background:linear-gradient(135deg,#5a189a,#3c096c)}
 .dept-finance{background:linear-gradient(135deg,#7b2cbf,#5a189a)}
 .dept-registration{background:linear-gradient(135deg,#9d4edd,#7b2cbf)}
 .dept-administration{background:linear-gradient(135deg,#3c096c,#240046)}
 .dept-moodle{background:linear-gradient(135deg,#c77dff,#9d4edd)}
+.dept-callcenter{background:linear-gradient(135deg,#6a00f4,#3c096c)}
 
 .report-card{
   background:linear-gradient(135deg,#7b2cbf,#5a189a);
   border-left:8px solid #c77dff;
 }
-.report-card a{color:#fff;text-decoration:none}
+.report-card a{
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  padding:20px;
+  box-sizing:border-box;
+}
 
 .back-btn {
   margin: 20px 40px;
   padding: 12px 25px;
-  background: #3c096c;      /* same as header */
-  color: #fff;              /* white text */
+  background: #3c096c;
+  color: #fff;
   border-radius: 8px;
   cursor: pointer;
   display: inline-block;
@@ -130,10 +136,8 @@ nav a:hover {
 }
 
 .back-btn:hover {
-  background: #5a189a;      /* optional: slightly lighter purple on hover */
+  background: #5a189a;
 }
-
-
 </style>
 </head>
 
@@ -150,6 +154,7 @@ nav a:hover {
     <a onclick="showDepartments('Moodle')">Moodle</a>
     <a onclick="showDepartments('Training')">Training</a>
     <a onclick="showDepartments('SAE')">SAE</a>
+    <a onclick="showDepartments('CallCenter')">Call Center</a>
   </nav>
 </header>
 
@@ -162,6 +167,7 @@ nav a:hover {
     <div class="card platform-moodle" onclick="showDepartments('Moodle')">Moodle</div>
     <div class="card platform-training" onclick="showDepartments('Training')">Training</div>
     <div class="card platform-sae" onclick="showDepartments('SAE')">SAE</div>
+    <div class="card platform-callcenter" onclick="showDepartments('CallCenter')">Call Center</div>
   </div>
 </div>
 
@@ -232,7 +238,7 @@ const data = {
         name: "Reg Bill  With Discounts  Details",
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCqNvA3g_SgQYU9eo5ymJZVAbPn3QsE9VC5mtWOCbRVfBQ?e=SdhlrW"
       },
-       {
+      {
         name: "User Students Timetable",
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBJiqWtDzQeQoOtQ6zLAlJmAaBmoV_yY02s_4TTMvu3cOE?e=dM7fik"
       },
@@ -243,7 +249,7 @@ const data = {
       {
         name: "Registration Bill Posting",
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB4sfxX6RIRT5FoQqB77FKQAXvw0I5dchAIRuMBQY8aayc?e=fi5uNo"
-      },
+      }
     ],
 
     Registration: [
@@ -291,7 +297,7 @@ const data = {
         name: "All Students - Registration",
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgD-4j53RrhfSbIaqEYqpAF2AT9sC2ilHtNU3e6NCwtqTPY?e=ecWQO5"
       },
-       {
+      {
         name: "Students Assesment",
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBSJl5BvfSrSK24Br_047dkAd7cxwHK25LdfRvgNOYKy84?e=nVrxEC"
       },
@@ -299,24 +305,24 @@ const data = {
         name: "LTUC Plans Configuration",
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCX6fe-RtZ1SqvorenjSz5oAZzPjuXazOLxUYaU9Kjv3yY?e=OqXETs"
       },
-        {
+      {
         name: "Student Timetable Conflict 20252",
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBvrKZCEtt0QaRnft0FQC-gAVjBBBGYuFa4PSNcmkyWIvY?e=fe5H3V"
       },
-       {
+      {
         name: "Reserved not registered students 20252",
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA4_XvX-K2nRqQFRt1VicQVASPGLf9Nwougyo2pfsIEtdg?e=s48tm9"
       },
-       {
+      {
         name: "LTUC Courses",
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAmmkl3GcueRYg9lsqECVyeAVaDg5jMu9N3-HCKOiV8Oxw"
       },
-       {
+      {
         name: "Attendance List",
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDBwCC1tb88SbB3X2RF9_EuATpQUji_rddCBcI8tEAkJEc?e=0F96VU"
       }
     ],
-  
+
     Administration: [
       {
         name: "Attendance Log",
@@ -393,7 +399,6 @@ const data = {
     ]
   },
 
-
   SAE: {
     Finance: [
       {
@@ -448,52 +453,64 @@ const data = {
         url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCvZHg9mY5cSbZ_8SIf2GVfAXTwPnB4gj5hRt3SJuUZuZY?e=ROcCRz"
       }
     ]
-  }
-}
-;
+  },
 
-let currentPlatform="";
+  CallCenter: {
+    CallCenter: [
+      {
+        name: "Training Student List",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDkm7vEYzUQT5VAkapGei8kASgg9RO4puAAxjJfR16eaAw?e=kQuzKx"
+      },
+      {
+        name: "Academia Student List",
+        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAgQp-oD519Qpf_8YnVSWQzAchCzX1LRUOM2Rjvat541Fw?e=OG8lL9"
+      }
+    ]
+  }
+};
+
+let currentPlatform = "";
+
 function showDepartments(p){
-  currentPlatform=p;
-  deptTitle.textContent=p+" Departments";
-  departments.innerHTML="";
-  Object.keys(data[p]).forEach(d=>{
-    const el=document.createElement("div");
-    el.className="card dept-"+d.toLowerCase();
-    el.textContent=d;
-    el.onclick=()=>showReports(d);
+  currentPlatform = p;
+  deptTitle.textContent = p + " Departments";
+  departments.innerHTML = "";
+  Object.keys(data[p]).forEach(d => {
+    const el = document.createElement("div");
+    el.className = "card dept-" + d.toLowerCase();
+    el.textContent = d === "CallCenter" ? "Call Center" : d;
+    el.onclick = () => showReports(d);
     departments.appendChild(el);
   });
-  platformView.style.display="none";
-  departmentView.style.display="block";
+  platformView.style.display = "none";
+  departmentView.style.display = "block";
+  reportView.style.display = "none";
 }
+
 function showReports(d){
-  reportTitle.textContent=d+" Reports";
-  reports.innerHTML="";
-  data[currentPlatform][d].forEach(r=>{
-    const el=document.createElement("div");
-    el.className="card report-card";
-    el.innerHTML=`<a href="${r.url}" target="_blank">${r.name}</a>`;
+  reportTitle.textContent = (d === "CallCenter" ? "Call Center" : d) + " Reports";
+  reports.innerHTML = "";
+  data[currentPlatform][d].forEach(r => {
+    const el = document.createElement("div");
+    el.className = "card report-card";
+    el.innerHTML = `<a href="${r.url}" target="_blank">${r.name}</a>`;
     reports.appendChild(el);
   });
-  departmentView.style.display="none";
-  reportView.style.display="block";
+  departmentView.style.display = "none";
+  reportView.style.display = "block";
 }
+
 function backToPlatforms(){
-  platformView.style.display="block";
-  departmentView.style.display="none";
-  reportView.style.display="none";
+  platformView.style.display = "block";
+  departmentView.style.display = "none";
+  reportView.style.display = "none";
 }
+
 function backToDepartments(){
-  reportView.style.display="none";
-  departmentView.style.display="block";
+  reportView.style.display = "none";
+  departmentView.style.display = "block";
 }
 </script>
 
 </body>
 </html>
-
-
-
-
-
