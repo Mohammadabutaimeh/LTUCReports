@@ -1,520 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>LTUC Reports Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LTUC Reports Dashboard - Stopped</title>
 
-<style>
-:root{
-  --bg-image:url('https://img.freepik.com/premium-photo/purple-gradient-background-with-copy-space-text-image_7954-38035.jpg');
-}
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Roboto', sans-serif;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-}
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-main {
-  flex: 1 0 auto;
-}
+  <style>
+    :root {
+      --primary: #3c096c;
+      --secondary: #5a189a;
+      --accent: #9d4edd;
+      --light: #f8f5ff;
+      --dark: #222;
+      --muted: #666;
+    }
 
-footer {
-  flex-shrink: 0;
-  background: #fff;
-  color: #333;
-  text-align: center;
-  padding: 18px;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-  font-family: 'Roboto', sans-serif;
-  background: #ffffff;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: 'Roboto', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(157, 78, 221, 0.18), transparent 35%),
+        linear-gradient(135deg, #ffffff 0%, #f3e8ff 45%, #ffffff 100%);
+      color: var(--dark);
+    }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 18px 40px;
-  background: #3c096c;
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 10;
-}
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 18px;
+    }
 
-.logo-container{text-align:center}
-.logo-container img{max-width:350px}
-.logo-container h1{color:#fff;margin:10px 0 0}
-nav {
-  display: flex;
-  gap: 25px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
+    .page-wrapper {
+      width: 100%;
+      max-width: 980px;
+    }
 
-nav a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 28px;
+      box-shadow: 0 20px 55px rgba(60, 9, 108, 0.18);
+      overflow: hidden;
+      border: 1px solid rgba(90, 24, 154, 0.12);
+    }
 
-nav a:hover {
-  color: #5a189a;
-  font-size: 18px;
-}
+    .top-bar {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 34px 28px;
+      text-align: center;
+      color: #fff;
+    }
 
-.page-title{color:#fff;text-align:center;font-size:30px;margin:40px 0}
-.container{
-  display:flex;flex-wrap:wrap;
-  gap:30px;justify-content:center;
-  margin-bottom:80px;
-}
-.card{
-  width:320px;height:220px;border-radius:20px;
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:20px;font-weight:bold;
-  cursor:pointer;transition:.3s;text-align:center;
-}
-.card:hover{transform:translateY(-10px) scale(1.05)}
+    .logo {
+      width: 145px;
+      max-width: 70%;
+      background: #fff;
+      padding: 10px 14px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    }
 
-.platform-university{background:linear-gradient(135deg,#3c096c,#240046)}
-.platform-moodle{background:linear-gradient(135deg,#5a189a,#3c096c)}
-.platform-training{background:linear-gradient(135deg,#7b2cbf,#5a189a)}
-.platform-sae{background:linear-gradient(135deg,#9d4edd,#7b2cbf)}
-.platform-callcenter{background:linear-gradient(135deg,#6a00f4,#3c096c)}
+    .top-bar h1 {
+      margin: 6px 0 0;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+    }
 
-.dept-admission{background:linear-gradient(135deg,#5a189a,#3c096c)}
-.dept-finance{background:linear-gradient(135deg,#7b2cbf,#5a189a)}
-.dept-registration{background:linear-gradient(135deg,#9d4edd,#7b2cbf)}
-.dept-administration{background:linear-gradient(135deg,#3c096c,#240046)}
-.dept-moodle{background:linear-gradient(135deg,#c77dff,#9d4edd)}
-.dept-callcenter{background:linear-gradient(135deg,#6a00f4,#3c096c)}
+    .content {
+      padding: 46px 38px 34px;
+      text-align: center;
+    }
 
-.report-card{
-  background:linear-gradient(135deg,#7b2cbf,#5a189a);
-  border-left:8px solid #c77dff;
-}
-.report-card a{
-  color:#fff;
-  text-decoration:none;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:100%;
-  height:100%;
-  padding:20px;
-  box-sizing:border-box;
-}
+    .status-badge {
+      display: inline-block;
+      background: #fff3cd;
+      color: #7a4f00;
+      border: 1px solid #ffe08a;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 22px;
+    }
 
-.back-btn {
-  margin: 20px 40px;
-  padding: 12px 25px;
-  background: #3c096c;
-  color: #fff;
-  border-radius: 8px;
-  cursor: pointer;
-  display: inline-block;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
+    .content h2 {
+      margin: 0 0 18px;
+      color: var(--primary);
+      font-size: 34px;
+      font-weight: 900;
+    }
 
-.back-btn:hover {
-  background: #5a189a;
-}
-</style>
+    .message {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      color: #444;
+      font-size: 19px;
+      line-height: 1.8;
+    }
+
+    .message strong {
+      color: var(--primary);
+    }
+
+    .arabic-message {
+      direction: rtl;
+      text-align: center;
+      font-size: 19px;
+      line-height: 1.9;
+      color: #444;
+      background: var(--light);
+      border: 1px solid rgba(90, 24, 154, 0.12);
+      padding: 22px;
+      border-radius: 18px;
+      margin: 25px auto 30px;
+      max-width: 760px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 230px;
+      padding: 15px 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 10px 22px rgba(60, 9, 108, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(60, 9, 108, 0.30);
+    }
+
+    .info-box {
+      margin: 34px auto 0;
+      max-width: 760px;
+      background: #fafafa;
+      border-left: 6px solid var(--accent);
+      padding: 20px 24px;
+      border-radius: 14px;
+      text-align: left;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .info-box strong {
+      color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px;
+      color: #777;
+      font-size: 14px;
+      border-top: 1px solid #eee;
+      background: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .top-bar h1 {
+        font-size: 24px;
+      }
+
+      .content {
+        padding: 34px 22px 28px;
+      }
+
+      .content h2 {
+        font-size: 27px;
+      }
+
+      .message,
+      .arabic-message {
+        font-size: 17px;
+      }
+
+      .btn {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="page-wrapper">
+    <div class="card">
 
-<header>
-  <div class="logo-container" onclick="backToPlatforms()" style="cursor:pointer;">
-    <img src="https://ltuc.edu.jo/wp-content/uploads/2025/01/LTUC-Logo.png">
-    <h1>LTUC Reports Dashboard</h1>
+      <div class="top-bar">
+        <img class="logo" src="https://ltuc.edu.jo/wp-content/uploads/2025/01/LTUC-Logo.png" alt="LTUC Logo">
+        <h1>LTUC Reports Dashboard</h1>
+      </div>
+
+      <div class="content">
+        <div class="status-badge">Service Update Notice</div>
+
+        <h2>This page has been stopped</h2>
+
+        <p class="message">
+          The <strong>LTUC Reports Dashboard</strong> has been stopped and transferred to the new
+          <strong>LTUC Metabase Reports</strong> platform.
+          Please use the link below to access the updated reports platform.
+        </p>
+
+        <div class="arabic-message">
+          تم إيقاف صفحة <strong>LTUC Reports Dashboard</strong> ونقل التقارير إلى منصة
+          <strong>LTUC Metabase Reports</strong> الجديدة.
+          <br>
+          يرجى زيارة الرابط أدناه للوصول إلى منصة التقارير الجديدة.
+          <br><br>
+          في حال عدم توفر صلاحية الدخول، يرجى التواصل مع <strong>LTUC IT Center</strong>.
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="https://metabase.ltuc.edu.jo/" target="_blank">
+            Visit LTUC Metabase Reports
+          </a>
+        </div>
+
+        <div class="info-box">
+          <strong>Access Support:</strong>
+          If you do not have permission to login to LTUC Metabase Reports, please contact
+          <strong>LTUC IT Center</strong> for assistance.
+        </div>
+      </div>
+
+      <footer>
+        © 2026 LTUC Education – All Rights Reserved | Powered by IT Center
+      </footer>
+
+    </div>
   </div>
-  <nav>
-    <a onclick="backToPlatforms()">Home</a>
-    <a onclick="showDepartments('University')">University</a>
-    <a onclick="showDepartments('Moodle')">Moodle</a>
-    <a onclick="showDepartments('Training')">Training</a>
-    <a onclick="showDepartments('SAE')">SAE</a>
-    <a onclick="showDepartments('CallCenter')">Call Center</a>
-  </nav>
-</header>
-
-<main>
-
-<div id="platformView">
-  <div class="page-title">Select Platform</div>
-  <div class="container">
-    <div class="card platform-university" onclick="showDepartments('University')">University</div>
-    <div class="card platform-moodle" onclick="showDepartments('Moodle')">Moodle</div>
-    <div class="card platform-training" onclick="showDepartments('Training')">Training</div>
-    <div class="card platform-sae" onclick="showDepartments('SAE')">SAE</div>
-    <div class="card platform-callcenter" onclick="showDepartments('CallCenter')">Call Center</div>
-  </div>
-</div>
-
-<div id="departmentView" style="display:none;">
-  <div class="back-btn" onclick="backToPlatforms()">← Back</div>
-  <div id="deptTitle" class="page-title"></div>
-  <div id="departments" class="container"></div>
-</div>
-
-<div id="reportView" style="display:none;">
-  <div class="back-btn" onclick="backToDepartments()">← Back</div>
-  <div id="reportTitle" class="page-title"></div>
-  <div id="reports" class="container"></div>
-</div>
-
-</main>
-
-<footer>© 2026 LTUC Education – All Rights Reserved</footer>
-
-<script>
-const data = {
-  University: {
-    Admission: [
-      {
-        name: "Active Admitted Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA4fzr7Z2H1SZE2-ctdE7ijAetBWjAx9JOBacJKB2Eitv4?e=D7UyFz"
-      },
-      {
-        name: "Applicants Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBX553PfUkOTolwP9NqlMxHAbMbCTKU66gcBHBCxY3vivg?e=MiXBuE"
-      },
-      {
-        name: "Student Academic Info",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAgfGULhEt5QI_CIqZ_28E1AZ4JfHlJIUispVTHEVoDsP4?e=YW6csi"
-      },
-      {
-        name: "Student Personal Info",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCrtJQ0NRs1SrGuYi8WN2YcAeiLY0CK3QOCUEU65cHY3G4?e=k5wXHv"
-      }
-    ],
-
-    Finance: [
-      {
-        name: "All Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDpdHMNZq4SRbWjciK4Q3ZRAX9nSgcxxlu_5sd5PK7MWyU?e=6ezjtw"
-      },
-      {
-        name: "Reg Bill Details",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgApbcDNP82HTqDXHPw0iC_BAYn_d0VrBl63RZcJ_l9QPR0?e=iSxPim"
-      },
-      {
-        name: "Registered Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAOEcKzU3oZR6-2zpL31DFdARkjbRwL-gwpGWoRBNCqwr4?e=fPcwtX"
-      },
-      {
-        name: "Registered Students Payments",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBKgLX7pKRXRrSl_3nKIqZiAVHY6jAE89Mt_LwYV-fD_VE?e=fiQZ1n"
-      },
-      {
-        name: "Registration Bill Summary",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDv9kGTgLkFSbFzzVnfTjXyAQPXBSDAjclDpp1Oh6eLJsc?e=Kxg21m"
-      },
-      {
-        name: "Student Registration Permisisons",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAPExEl6jxqTLyjrbi-S5gyAUnwbvtm0MMQvlNSGbwsuXs?e=OrkRjW"
-      },
-      {
-        name: "Reg Bill  With Discounts  Details",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCqNvA3g_SgQYU9eo5ymJZVAbPn3QsE9VC5mtWOCbRVfBQ?e=SdhlrW"
-      },
-      {
-        name: "User Students Timetable",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBJiqWtDzQeQoOtQ6zLAlJmAaBmoV_yY02s_4TTMvu3cOE?e=dM7fik"
-      },
-      {
-        name: "Reg Bill Details with refund",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBWeVZ1j5p0S7uiXuENEdslASoT73TB-Jpun3fShPuVYG8?e=3lYSYl"
-      },
-      {
-        name: "Registration Bill Posting",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB4sfxX6RIRT5FoQqB77FKQAXvw0I5dchAIRuMBQY8aayc?e=fi5uNo"
-      }
-    ],
-
-    Registration: [
-      {
-        name: "Facility Timetable Conflict",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAhwjmJ7bMzRLaghQYCEIgJAYAUO2AvXLMgTJlKRWWAzrw?e=opavcm"
-      },
-      {
-        name: "Facility Timetable Pivot",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBTbdCL2jw_QpkwZjdsIv0BAW8khIUdAAJd6k9E--JFrPY?e=uDKC0J"
-      },
-      {
-        name: "Registered Students - Registration",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAhIWpPIzO-Taw2JKFb8YbWAYtj97nAYZ_CWFx7QcaQm4Q?e=1ITCI6"
-      },
-      {
-        name: "Registration Summary",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAx27odvGawSrhTAmt2MK04AZMyO4IRjmCNi7iOyUojy8k?e=8qsl0D"
-      },
-      {
-        name: "Timetable",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDsSGT8xrbwSb98ZfT_zwJoAfygGMdDBlfyQ1h031-TWTA?e=3wfzul"
-      },
-      {
-        name: "Students Timetable",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAQuzytWqANTbdODSodWzjTAWgRIszrCRDKv7Q_793Lfzg?e=g48v9C"
-      },
-      {
-        name: "Teacher Timetable Conflicts",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCo6lxjingtS7C8fxlcGqlzAYosx6C8x79XHgS04iThlzM?e=o3vbyQ"
-      },
-      {
-        name: "Reg Hours Max",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgB4Ieo8e8XxRZVkZa38T7XHASF7XtB_Y0baQvrOorM959w?e=JLCuN0"
-      },
-      {
-        name: "Reg Hours Min",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA0zqXpDsIST7FMzgeU_HBUAYc1xs0Q6fdnW81mWsMeTl0?e=d4lhQp"
-      },
-      {
-        name: "Registration Numbers By Branch",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCVR77WEB9RSJ2Bq6Ll3mwfAZ33I3rH2ZYaSIh1g4sT7rg?e=aFZtu2"
-      },
-      {
-        name: "All Students - Registration",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgD-4j53RrhfSbIaqEYqpAF2AT9sC2ilHtNU3e6NCwtqTPY?e=ecWQO5"
-      },
-      {
-        name: "Students Assesment",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBSJl5BvfSrSK24Br_047dkAd7cxwHK25LdfRvgNOYKy84?e=nVrxEC"
-      },
-      {
-        name: "LTUC Plans Configuration",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCX6fe-RtZ1SqvorenjSz5oAZzPjuXazOLxUYaU9Kjv3yY?e=OqXETs"
-      },
-      {
-        name: "Student Timetable Conflict 20252",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBvrKZCEtt0QaRnft0FQC-gAVjBBBGYuFa4PSNcmkyWIvY?e=fe5H3V"
-      },
-      {
-        name: "Reserved not registered students 20252",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA4_XvX-K2nRqQFRt1VicQVASPGLf9Nwougyo2pfsIEtdg?e=s48tm9"
-      },
-      {
-        name: "LTUC Courses",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAmmkl3GcueRYg9lsqECVyeAVaDg5jMu9N3-HCKOiV8Oxw"
-      },
-      {
-        name: "Attendance List",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDBwCC1tb88SbB3X2RF9_EuATpQUji_rddCBcI8tEAkJEc?e=0F96VU"
-      },
-      {
-        name: "Unregistered Students 20252",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDvG5G4wJqgS5SQBukFcSUTARelhXxSVr3WteetbGDkBmk?e=PTKS3y"
-      },
-    ],
-
-    Administration: [
-      {
-        name: "Attendance Log",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAEuQjRRgGgTJCZ_wAswtNiAWaM8M1Zq0Yeq_rAKVoUXVg?e=Z3Zmgx"
-      }
-    ]
-  },
-
-  Moodle: {
-    Moodle: [
-      {
-        name: "Integration Moodle Classes - Training",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBSKrJUxdIQQphzqAvh0rJ4Af1u4dbKcWRhJ9DIIOvhvM0?e=4YRHUG"
-      },
-      {
-        name: "Integration Moodle Classes - University",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDhPNhw0NhlTJ7fdSS55b1HATqr52Nk15EZSbnUTsNovrI?e=JjJSq8"
-      },
-      {
-        name: "Integration Moodle New Students - Placment Test",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBC6h04M8I0SY1GKp6jl1ucAYlLa2_E__mZqtOsqttPXa0?e=NKTej0"
-      }
-    ]
-  },
-
-  Training: {
-    Admission: [
-      {
-        name: "Active Admitted Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgD92lvg4-swSqCp8P2IlJN6AZES6kBQI2NcwagAuUqSAPg?e=VLDKmR"
-      },
-      {
-        name: "Applicants Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBxdes786GIQ54T9jx4SRdYAXYjwA2UneLhOH_1SeJobw0?e=Zj3Qxf"
-      }
-    ],
-
-    Finance: [
-      {
-        name: "All Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDoOU9oE-MuQpSC5RrMVvepAZyK1qVUilEtyjl0IIrxZMc?e=xoszYm"
-      },
-      {
-        name: "Reg Bill Details",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAiUaqAl7CZT6ZMtW2g1TbWAYNMJyDS4KuPyN8Fegu1C_A?e=211iYq"
-      },
-      {
-        name: "Registered Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBxfscm4wNlTYiqK9ACM-fDAQKaaVvuuO4LhMeWCCGgqQ8?e=H6tL2w"
-      },
-      {
-        name: "Registered Students Payments",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA7Nr3xwzcTSIZb8D5Ppk8CAZLZfgXdqP1SY8AqBfWaFI0?e=zjfaC9"
-      },
-      {
-        name: "Registration Bill Summary",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCz_snPM4-zTr1fUZyYieY_Abx_8urjgdFv-Wu4g2uRm0A?e=yxjMeo"
-      }
-    ],
-
-    Registration: [
-      {
-        name: "Registration Summary",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDbfQzIREs0SJWsUsyAZmqEAfoklT3LHTF06Z4ODnPmH50?e=HjDOWS"
-      },
-      {
-        name: "Timetable",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDrzZIFTCvvS5kZUJYtSKvYAfawZTwJc4B2bvOHydUwfNc?e=VdeUV0"
-      },
-      {
-        name: "User Registered Students - Registration",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBP0nNOAIksQ6uQ27yX4nWRASSVY-h3yZhqSGKsY3RPFQI?e=uWQzAH"
-      }
-    ]
-  },
-
-  SAE: {
-    Finance: [
-      {
-        name: "All Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBVCWOvwAwhQq051HEOpXhWAUMFfoRVmdvFAzR5kf7-dlw?e=mrD9Yh"
-      },
-      {
-        name: "Reg Bill Details",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAs1rUz10BsQ7yM6TRP6I38AXLVJzfd4PlnBGRtoxpwa1A?e=2Wsgef"
-      },
-      {
-        name: "Registered Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCXkPC3WE4eTZmly6CPbBB3AXY8XpXIfjoPQLhJ9FL8BJI?e=5jceRu"
-      },
-      {
-        name: "Registered Students Payments",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAFiucIpmaFQqLk8NBIKRmaATWYVfdkfM-8jKH31Q157bo?e=nXkNZL"
-      },
-      {
-        name: "Registration Bill Summary",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCdcp7FHp0MQ4-jCywesKXAAQwjvWeYVcaZm0NDwEPZvWs?e=nb1a5I"
-      },
-      {
-        name: "Student Registration Permisisons",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgD2O5tIUobkTbyqKeKxskfsAar84sa9As_En8SS3InWf-c"
-      }
-    ],
-
-    Registration: [
-      {
-        name: "Active Admitted Students",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCinteUYiZKQI-iCaw9AuVJAWripw81OQ5kP94hYtfkrsg?e=gLiaD3"
-      },
-      {
-        name: "Timetable View",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAOQBtkdvn0Qr7I1gM7w0xdAU6qN_HZnqBPFNqxhiObM3A?e=KZpeGK"
-      },
-      {
-        name: "All Students - Registration",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCZazuCzXwSQZMiL4-cbszeAccC3-VchNFWO9nsyn8bVYA?e=kpdyke"
-      },
-      {
-        name: "Students Timetable",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgBYN60PtrATSow6_bYLA6okAe4Jx4lFb4puPO_h6IZW3zo?e=4ARywd"
-      },
-      {
-        name: "Registered Students - Registration",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgA_kEukpQ_ERpUbx5TO_fEjAcFLMoI-MKoE1j0ABxaVRZM?e=RgoNJd"
-      },
-      {
-        name: "Registration Status By Branch",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgCvZHg9mY5cSbZ_8SIf2GVfAXTwPnB4gj5hRt3SJuUZuZY?e=ROcCRz"
-      }
-    ]
-  },
-
-  CallCenter: {
-    CallCenter: [
-      {
-        name: "Training Student List",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgDkm7vEYzUQT5VAkapGei8kASgg9RO4puAAxjJfR16eaAw?e=kQuzKx"
-      },
-      {
-        name: "Academia Student List",
-        url: "https://alqudscollege-my.sharepoint.com/:f:/g/personal/mb-reports_ltuc_edu_jo/IgAgQp-oD519Qpf_8YnVSWQzAchCzX1LRUOM2Rjvat541Fw?e=OG8lL9"
-      }
-    ]
-  }
-};
-
-let currentPlatform = "";
-
-function showDepartments(p){
-  currentPlatform = p;
-  deptTitle.textContent = p + " Departments";
-  departments.innerHTML = "";
-  Object.keys(data[p]).forEach(d => {
-    const el = document.createElement("div");
-    el.className = "card dept-" + d.toLowerCase();
-    el.textContent = d === "CallCenter" ? "Call Center" : d;
-    el.onclick = () => showReports(d);
-    departments.appendChild(el);
-  });
-  platformView.style.display = "none";
-  departmentView.style.display = "block";
-  reportView.style.display = "none";
-}
-
-function showReports(d){
-  reportTitle.textContent = (d === "CallCenter" ? "Call Center" : d) + " Reports";
-  reports.innerHTML = "";
-  data[currentPlatform][d].forEach(r => {
-    const el = document.createElement("div");
-    el.className = "card report-card";
-    el.innerHTML = `<a href="${r.url}" target="_blank">${r.name}</a>`;
-    reports.appendChild(el);
-  });
-  departmentView.style.display = "none";
-  reportView.style.display = "block";
-}
-
-function backToPlatforms(){
-  platformView.style.display = "block";
-  departmentView.style.display = "none";
-  reportView.style.display = "none";
-}
-
-function backToDepartments(){
-  reportView.style.display = "none";
-  departmentView.style.display = "block";
-}
-</script>
-
 </body>
 </html>
