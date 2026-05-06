@@ -3,260 +3,527 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LTUC Reports Dashboard - Stopped</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <title>LTUC Reports Dashboard - Service Transferred</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --primary: #3c096c;
       --secondary: #5a189a;
       --accent: #9d4edd;
-      --light: #f8f5ff;
-      --dark: #222;
-      --muted: #666;
+      --accent-light: #c77dff;
+      --dark: #1d1430;
+      --text: #2f2f3a;
+      --muted: #6b6b7a;
+      --white: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --border: rgba(255, 255, 255, 0.25);
+      --shadow: 0 20px 60px rgba(60, 9, 108, 0.18);
+      --shadow-hover: 0 28px 80px rgba(60, 9, 108, 0.24);
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-      font-family: 'Roboto', sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(157, 78, 221, 0.18), transparent 35%),
-        linear-gradient(135deg, #ffffff 0%, #f3e8ff 45%, #ffffff 100%);
-      color: var(--dark);
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px 18px;
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Roboto', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(199, 125, 255, 0.22), transparent 20%),
+        radial-gradient(circle at 85% 25%, rgba(90, 24, 154, 0.18), transparent 22%),
+        radial-gradient(circle at 50% 85%, rgba(157, 78, 221, 0.20), transparent 25%),
+        linear-gradient(135deg, #f8f4ff 0%, #f5edff 35%, #ffffff 100%);
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .page-wrapper {
-      width: 100%;
-      max-width: 980px;
+    /* Animated background shapes */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      z-index: 0;
+      filter: blur(20px);
+      opacity: 0.35;
+      animation: floatBlob 12s ease-in-out infinite;
+      pointer-events: none;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.96);
-      border-radius: 28px;
-      box-shadow: 0 20px 55px rgba(60, 9, 108, 0.18);
+    body::before {
+      top: -120px;
+      left: -120px;
+      background: linear-gradient(135deg, #9d4edd, #c77dff);
+    }
+
+    body::after {
+      bottom: -140px;
+      right: -120px;
+      background: linear-gradient(135deg, #5a189a, #7b2cbf);
+      animation-delay: 2s;
+    }
+
+    @keyframes floatBlob {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(20px, -15px) scale(1.05); }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 30px 20px 40px;
+    }
+
+    .hero {
+      position: relative;
       overflow: hidden;
-      border: 1px solid rgba(90, 24, 154, 0.12);
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(60,9,108,0.96), rgba(90,24,154,0.92));
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      padding: 40px 30px 34px;
+      margin-bottom: 28px;
+      animation: fadeUp 1s ease;
     }
 
-    .top-bar {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      padding: 34px 28px;
-      text-align: center;
-      color: #fff;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 18%),
+        radial-gradient(circle at 80% 35%, rgba(255,255,255,0.10), transparent 20%);
+      pointer-events: none;
     }
 
-   .logo {
-  width: 170px;
-  max-width: 80%;
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  margin-bottom: 18px;
-  box-shadow: none;
-}
-
-    .top-bar h1 {
-      margin: 6px 0 0;
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 0.3px;
-    }
-
-    .content {
-      padding: 46px 38px 34px;
-      text-align: center;
-    }
-
-    .status-badge {
-      display: inline-block;
-      background: #fff3cd;
-      color: #7a4f00;
-      border: 1px solid #ffe08a;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 15px;
-      margin-bottom: 22px;
-    }
-
-    .content h2 {
-      margin: 0 0 18px;
-      color: var(--primary);
-      font-size: 34px;
-      font-weight: 900;
-    }
-
-    .message {
-      max-width: 760px;
-      margin: 0 auto 28px;
-      color: #444;
-      font-size: 19px;
-      line-height: 1.8;
-    }
-
-    .message strong {
-      color: var(--primary);
-    }
-
-    .arabic-message {
-      direction: rtl;
-      text-align: center;
-      font-size: 19px;
-      line-height: 1.9;
-      color: #444;
-      background: var(--light);
-      border: 1px solid rgba(90, 24, 154, 0.12);
-      padding: 22px;
-      border-radius: 18px;
-      margin: 25px auto 30px;
-      max-width: 760px;
-    }
-
-    .actions {
+    .hero-inner {
+      position: relative;
+      z-index: 1;
       display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 25px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
-    .btn {
+    .logo-wrap {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 230px;
-      padding: 15px 24px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 16px;
-      transition: 0.25s ease;
+      margin-bottom: 20px;
+      animation: softPulse 3s ease-in-out infinite;
     }
 
-    .btn-primary {
+    .logo {
+      width: 210px;
+      max-width: 85%;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.30));
+    }
+
+    @keyframes softPulse {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
       color: #fff;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      box-shadow: 0 10px 22px rgba(60, 9, 108, 0.25);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+      animation: fadeIn 1.2s ease;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 28px rgba(60, 9, 108, 0.30);
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ffd166;
+      box-shadow: 0 0 0 0 rgba(255, 209, 102, 0.7);
+      animation: pulse 1.8s infinite;
     }
 
-    .info-box {
-      margin: 34px auto 0;
-      max-width: 760px;
-      background: #fafafa;
-      border-left: 6px solid var(--accent);
-      padding: 20px 24px;
-      border-radius: 14px;
-      text-align: left;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 16px;
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 209, 102, 0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(255, 209, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 209, 102, 0); }
     }
 
-    .info-box strong {
+    .hero h1 {
+      margin: 0;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 14px auto 0;
+      max-width: 780px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .info-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 28px 26px;
+      min-height: 360px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      animation: fadeUp 1s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(157, 78, 221, 0.35);
+    }
+
+    .info-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(157, 78, 221, 0.06), rgba(90, 24, 154, 0.02));
+      pointer-events: none;
+    }
+
+    .info-card::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199,125,255,0.22), transparent 65%);
+      pointer-events: none;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-label {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(90, 24, 154, 0.10);
+      color: var(--secondary);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .info-card h2 {
+      margin: 0 0 18px;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+
+    .info-card p {
+      margin: 0 0 14px;
+      font-size: 17px;
+      line-height: 1.9;
+      color: var(--text);
+    }
+
+    .info-card strong {
       color: var(--primary);
     }
 
-    footer {
-      text-align: center;
-      padding: 22px;
-      color: #777;
-      font-size: 14px;
-      border-top: 1px solid #eee;
-      background: #fff;
+    .english-card {
+      text-align: left;
     }
 
-    @media (max-width: 600px) {
-      .top-bar h1 {
-        font-size: 24px;
+    .arabic-card {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .arabic-card h2 {
+      font-family: 'Cairo', sans-serif;
+      font-weight: 800;
+    }
+
+    .support-box {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(157,78,221,0.08), rgba(90,24,154,0.05));
+      border: 1px solid rgba(157,78,221,0.16);
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .button-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+      animation: fadeUp 1.1s ease;
+    }
+
+    .cta-button {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: 360px;
+      max-width: 100%;
+      padding: 18px 28px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      box-shadow: 0 18px 35px rgba(90, 24, 154, 0.28);
+      transition: transform 0.30s ease, box-shadow 0.30s ease;
+    }
+
+    .cta-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.30), transparent);
+      transform: skewX(-25deg);
+      animation: shine 3.2s infinite;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 24px 45px rgba(90, 24, 154, 0.34);
+    }
+
+    @keyframes shine {
+      0% { left: -120%; }
+      55% { left: 130%; }
+      100% { left: 130%; }
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 980px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
       }
 
-      .content {
-        padding: 34px 22px 28px;
+      .hero h1 {
+        font-size: 34px;
       }
 
-      .content h2 {
-        font-size: 27px;
-      }
-
-      .message,
-      .arabic-message {
+      .hero p {
         font-size: 17px;
       }
 
-      .btn {
-        width: 100%;
-        min-width: auto;
+      .info-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 18px 14px 30px;
+      }
+
+      .hero {
+        padding: 28px 18px 24px;
+        border-radius: 24px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .hero p {
+        font-size: 16px;
+        line-height: 1.8;
+      }
+
+      .info-card {
+        padding: 22px 18px;
+        border-radius: 22px;
+      }
+
+      .info-card h2 {
+        font-size: 24px;
+      }
+
+      .info-card p {
+        font-size: 16px;
+      }
+
+      .cta-button {
+        min-width: 100%;
+        font-size: 16px;
+        padding: 16px 18px;
+      }
+
+      .logo {
+        width: 180px;
       }
     }
   </style>
 </head>
-
 <body>
-  <div class="page-wrapper">
-    <div class="card">
 
-      <div class="top-bar">
-        <img class="logo" src="https://ltuc.edu.jo/wp-content/uploads/2025/01/LTUC-Logo.png" alt="LTUC Logo">
+  <div class="page">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="logo-wrap">
+          <img class="logo" src="https://ltuc.edu.jo/wp-content/uploads/2025/01/LTUC-Logo.png" alt="LTUC Logo">
+        </div>
+
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Service Update Notice
+        </div>
+
         <h1>LTUC Reports Dashboard</h1>
-      </div>
-
-      <div class="content">
-        <div class="status-badge">Service Update Notice</div>
-
-        <h2>This page has been stopped</h2>
-
-        <p class="message">
-          The <strong>LTUC Reports Dashboard</strong> has been stopped and transferred to the new
-          <strong>LTUC Metabase Reports</strong> platform.
-          Please use the link below to access the updated reports platform.
+        <p>
+          The previous reports dashboard is no longer available.
+          Please review the information below and use the new LTUC Metabase Reports platform.
         </p>
+      </div>
+    </section>
 
-        <div class="arabic-message">
-          تم إيقاف صفحة <strong>LTUC Reports Dashboard</strong> ونقل التقارير إلى منصة
-          <strong>LTUC Metabase Reports</strong> الجديدة.
-          <br>
-          يرجى زيارة الرابط أدناه للوصول إلى منصة التقارير الجديدة.
-          <br><br>
-          في حال عدم توفر صلاحية الدخول، يرجى التواصل مع <strong>LTUC IT Center</strong>.
-        </div>
+    <section class="cards-grid">
 
-        <div class="actions">
-          <a class="btn btn-primary" href="https://metabase.ltuc.edu.jo/" target="_blank">
-            Visit LTUC Metabase Reports
-          </a>
-        </div>
+      <!-- English card on the left -->
+      <div class="info-card english-card">
+        <div class="card-content">
+          <div class="card-label">English Notice</div>
+          <h2>This page has been stopped</h2>
 
-        <div class="info-box">
-          <strong>Access Support:</strong>
-          If you do not have permission to login to LTUC Metabase Reports, please contact
-          <strong>LTUC IT Center</strong> for assistance.
+          <p>
+            The <strong>LTUC Reports Dashboard</strong> has been stopped and transferred to the new
+            <strong>LTUC Metabase Reports</strong> platform.
+          </p>
+
+          <p>
+            Please use the new platform to access your reports, dashboards, and updated data.
+          </p>
+
+          <p>
+            If you do not have permission to login, please contact
+            <strong>LTUC IT Center</strong>.
+          </p>
+
+          <div class="support-box">
+            <strong>Note:</strong> All users should now use LTUC Metabase Reports instead of the previous LTUC Reports Dashboard.
+          </div>
         </div>
       </div>
 
-      <footer>
-        © 2026 LTUC Education – All Rights Reserved | Powered by IT Center
-      </footer>
+      <!-- Arabic card on the right -->
+      <div class="info-card arabic-card">
+        <div class="card-content">
+          <div class="card-label">إشعار بالعربية</div>
+          <h2>تم إيقاف هذه الصفحة</h2>
 
+          <p>
+            تم إيقاف <strong>LTUC Reports Dashboard</strong> ونقل الخدمة إلى منصة
+            <strong>LTUC Metabase Reports</strong> الجديدة.
+          </p>
+
+          <p>
+            يرجى استخدام المنصة الجديدة للوصول إلى التقارير ولوحات المعلومات والبيانات المحدثة.
+          </p>
+
+          <p>
+            في حال عدم توفر صلاحية الدخول، يرجى التواصل مع
+            <strong>LTUC IT Center</strong>.
+          </p>
+
+          <div class="support-box">
+            <strong>ملاحظة:</strong>
+            يجب على جميع المستخدمين من الآن فصاعدًا استخدام منصة LTUC Metabase Reports بدلًا من منصة LTUC Reports Dashboard السابقة.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="button-wrap">
+      <a class="cta-button" href="https://metabase.ltuc.edu.jo/" target="_blank">
+        Visit LTUC Metabase Reports
+      </a>
     </div>
+
+    <div class="footer">
+      © 2026 LTUC Education – All Rights Reserved | Powered by IT Center
+    </div>
+
   </div>
+
 </body>
 </html>
